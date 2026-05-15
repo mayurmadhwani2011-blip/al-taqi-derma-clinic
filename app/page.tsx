@@ -533,7 +533,11 @@ export default function Home() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass rounded-3xl p-5 text-white"
+            className={`glass rounded-3xl p-5 ${
+              theme === "light"
+                ? "border border-[rgba(20,20,20,0.18)] bg-[rgba(255,255,255,0.9)] text-[var(--text)]"
+                : "border border-white/20 bg-white/10 text-white"
+            }`}
             style={{ x: panelParallaxX, y: panelParallaxY }}
           >
             <h2 className="mb-4 text-2xl">Signature Focus Areas</h2>
@@ -544,7 +548,11 @@ export default function Home() {
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 }}
-                  className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3"
+                  className={`rounded-2xl px-4 py-3 ${
+                    theme === "light"
+                      ? "border border-[rgba(20,20,20,0.12)] bg-[rgba(255,255,255,0.78)] text-[var(--text)]"
+                      : "border border-white/20 bg-white/10 text-white"
+                  }`}
                 >
                   {item}
                 </motion.div>
