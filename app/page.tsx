@@ -7,6 +7,7 @@ import {
   CalendarCheck2,
   ChevronDown,
   Clock3,
+  Instagram,
   MessageCircle,
   Moon,
   Phone,
@@ -38,6 +39,17 @@ const instagramImages = [
   "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=900&q=80",
   "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=900&q=80",
+];
+
+const instagramAccounts = [
+  {
+    label: "Dr. Nourah AlSulaili",
+    handle: "drnoraalsulaili",
+  },
+  {
+    label: "Dr. Majed Al Taqi",
+    handle: "draltaqi",
+  },
 ];
 
 const copy = {
@@ -146,30 +158,35 @@ const services = [
   "Anti-aging Solutions",
 ];
 
+const serviceImages = [
+  "/services/dermatology-consultation.jpg",
+  "/services/laser-hair-removal.png",
+  "/services/botox-fillers.jpg",
+  "/services/hydrafacial.webp",
+  "/services/acne-treatment.jpg",
+  "/services/skin-rejuvenation.jpg",
+  "/services/prp-therapy.jpeg",
+  "/services/hair-loss-treatment.jpg",
+  "/services/pigmentation-treatment.jpg",
+  "/services/anti-aging-solutions.webp",
+];
+
 const doctors = [
   {
-    name: "Dr. Noura Al-Hassan, MD",
-    roleEn: "Consultant Dermatologist",
-    roleAr: "استشارية الأمراض الجلدية",
-    bioEn: "Board-certified dermatologist with international fellowships in laser aesthetics and regenerative skin medicine.",
-    bioAr: "استشارية جلدية معتمدة وزمالات دولية في الليزر التجميلي وطب الجلد التجديدي.",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80",
+    name: "Dr. Nourah AlSulaili",
+    roleEn: "Dermatologist",
+    roleAr: "طبيبة جلدية",
+    bioEn: "Specialized dermatology clinic under the supervision of Dr. Noura Al-Salili. Precision medical treatment, advanced laser, and non-surgical cosmetic procedures. Your beauty is our responsibility.",
+    bioAr: "عيادة جلدية متخصصة تحت إشراف الدكتورة نورة السليلي. علاج طبي دقيق، ليزر متقدم، وإجراءات تجميلية غير جراحية. جمالك مسؤوليتنا.",
+    image: "/Dr_Nourah.png",
   },
   {
-    name: "Dr. Layla Al-Sabah, MD",
-    roleEn: "Laser & Aesthetic Specialist",
-    roleAr: "أخصائية الليزر والتجميل",
-    bioEn: "Specialized in medical-grade laser protocols, pigmentation correction, and texture refinement with evidence-based care.",
-    bioAr: "متخصصة في بروتوكولات الليزر الطبي وعلاج التصبغات وتحسين ملمس البشرة وفق أسس علمية.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    name: "Dr. Huda Al-Mutairi, MD",
-    roleEn: "Hair & Regenerative Dermatology",
-    roleAr: "طب الشعر والجلدية التجديدية",
-    bioEn: "Focuses on PRP, hair restoration planning, and anti-aging programs designed for long-term skin health.",
-    bioAr: "تركز على البلازما PRP وخطط استعادة الشعر وبرامج مكافحة الشيخوخة لصحة جلدية مستدامة.",
-    image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=1200&q=80",
+    name: "Dr. Majed Al Taqi, MD FRCS(C)",
+    roleEn: "Aesthetic Plastic Surgeon",
+    roleAr: "جراح التجميل والإصلاح",
+    bioEn: "Consultant Plastic and Reconstructive Surgeon, Canadian Board Certified (FRCS(C)). Specialist in facial aesthetics, body contouring, and advanced reconstructive procedures with international expertise.",
+    bioAr: "استشاري جراحة التجميل والإصلاح، معتمد من الكندية (FRCS(C)). متخصص في جماليات الوجه وتحديد الجسم والإجراءات الإصلاحية المتقدمة مع خبرة دولية.",
+    image: "/Dr_Majed.jpg",
   },
 ];
 
@@ -224,6 +241,7 @@ export default function Home() {
   const progressScale = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.24 });
 
   const t = copy[lang];
+  const currentYear = new Date().getFullYear();
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(clinicCoordinates)}&z=17&output=embed`;
 
   const clinicSchema = useMemo(
@@ -359,7 +377,7 @@ export default function Home() {
   }, [testimonials.length, shouldReduceMotion]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative flex min-h-screen flex-col overflow-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -540,7 +558,7 @@ export default function Home() {
         <div className="floating-particle left-[74%] top-[82%]" style={{ animationDelay: "2.1s" }} />
       </header>
 
-      <main id="main-content" className="mx-auto w-[92%] max-w-7xl space-y-10 py-12 md:py-16">
+      <main id="main-content" className="mx-auto w-[92%] max-w-7xl flex-1 space-y-10 py-12 md:py-16">
         <section className="grid gap-6 lg:grid-cols-2 lg:items-center" id="about">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -623,7 +641,7 @@ export default function Home() {
                 </p>
                 <div className="mt-4 h-28 overflow-hidden rounded-xl">
                   <Image
-                    src={galleryImages[i % galleryImages.length]}
+                    src={serviceImages[i]}
                     alt={service}
                     width={400}
                     height={260}
@@ -643,7 +661,15 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {doctors.map((doctor) => (
               <motion.article key={doctor.name} whileHover={{ y: -4 }} className="glass luxury-border overflow-hidden rounded-3xl">
-                <Image src={doctor.image} alt={doctor.name} width={900} height={760} className="h-64 w-full object-cover" />
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#f3eadc]">
+                  <Image
+                    src={doctor.image}
+                    alt={doctor.name}
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-center"
+                  />
+                </div>
                 <div className="p-5 text-[var(--text)]">
                   <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">{lang === "en" ? doctor.roleEn : doctor.roleAr}</p>
                   <h3 className="mt-2 text-2xl">{doctor.name}</h3>
@@ -656,6 +682,35 @@ export default function Home() {
                 </div>
               </motion.article>
             ))}
+            <aside className="glass luxury-border flex flex-col justify-between rounded-3xl p-6 text-[var(--text)]">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[var(--gold)]">Clinic Focus</p>
+                <h3 className="mt-2 text-3xl">Two specialists, one care pathway</h3>
+                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+                  Dr. Nourah leads precision dermatology, laser, and non-surgical cosmetic care, while Dr. Majed handles advanced plastic and reconstructive procedures. Together they cover the full treatment journey under one roof.
+                </p>
+                <ul className="mt-5 space-y-3 text-sm text-[var(--muted)]">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
+                    Precision medical dermatology with advanced laser support
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
+                    Non-surgical cosmetic procedures and skin refinement
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
+                    Canadian board-certified plastic and reconstructive surgery
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-6 rounded-2xl border border-[var(--line)] bg-white/25 p-4">
+                <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">Patient Promise</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+                  Your beauty is our responsibility. We build personalized plans that balance safety, elegance, and long-term results.
+                </p>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -828,7 +883,50 @@ export default function Home() {
         </section>
 
         <section id="instagram">
-          <h2 className="mb-4 text-4xl">{t.instagramTitle}</h2>
+          <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white/45 text-[var(--text)] shadow-sm">
+                  <Instagram size={20} />
+                </span>
+                <h2 className="text-4xl">{t.instagramTitle}</h2>
+              </div>
+              <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
+                Connect with the doctors on Instagram for updates, behind-the-scenes content, and treatment highlights.
+              </p>
+              <div className="mt-4 inline-flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-white/45 px-4 py-3 text-sm text-[var(--muted)] shadow-sm">
+                <MessageCircle className="mt-0.5 shrink-0 text-[var(--gold)]" size={18} />
+                <div>
+                  <p className="font-medium text-[var(--text)]">A personal note from our team</p>
+                  <p className="mt-1 leading-6">
+                    Dr. Nourah and Dr. Majed welcome you to follow along, send a DM, or reach out with your skin goals. We love turning questions into a clear care plan.
+                  </p>
+                  <p className="mt-3 font-serif text-base italic text-[var(--text)]">
+                    "Your beauty is our responsibility."
+                  </p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[var(--gold)]">
+                    Dr. Nourah AlSulaili & Dr. Majed Al Taqi
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {instagramAccounts.map((account) => (
+                <a
+                  key={account.handle}
+                  href={`https://instagram.com/${account.handle}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-[var(--line)] bg-white/40 px-4 py-2 text-sm font-medium text-[var(--text)] transition hover:bg-white/70"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <Instagram size={15} />
+                    @{account.handle}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {instagramImages.map((image) => (
               <Image key={image} src={image} alt="Instagram skincare post" width={420} height={420} className="h-56 w-full rounded-2xl object-cover" />
@@ -866,6 +964,9 @@ export default function Home() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+        </div>
+        <div className="mx-auto mt-8 w-[92%] max-w-7xl border-t border-white/10 pt-4 text-xs text-[#cbbba9]">
+          <p>© {currentYear} Al Taqi Poly Clinic. All rights reserved.</p>
         </div>
       </footer>
 
