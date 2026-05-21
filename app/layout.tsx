@@ -21,7 +21,7 @@ const arabicFont = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "Al Taqi Poly Clinic | Luxury Dermatology Kuwait",
+  title: "Al Taqi Poly Clinic | Dermatology, Plastic Surgery & Aesthetics Kuwait",
   description:
     "Advanced dermatology and aesthetic care in Kuwait. Premium consultations, laser treatments, Botox, fillers, skin rejuvenation, and digital-first appointment booking.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "Aesthetic clinic Kuwait",
     "Laser treatment Kuwait",
     "Botox fillers Kuwait",
-    "Luxury dermatology",
+    "Dermatology and aesthetics",
     "Al Taqi Poly Clinic",
   ],
   alternates: {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Al Taqi Poly Clinic | Luxury Dermatology Kuwait",
+    title: "Al Taqi Poly Clinic | Dermatology, Plastic Surgery & Aesthetics Kuwait",
     description:
       "World-class dermatology and aesthetic care in Kuwait with premium medical experience.",
     type: "website",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Al Taqi Poly Clinic | Luxury Dermatology Kuwait",
+    title: "Al Taqi Poly Clinic | Dermatology, Plastic Surgery & Aesthetics Kuwait",
     description:
       "Advanced dermatology, laser, and aesthetic care with premium concierge experience.",
   },

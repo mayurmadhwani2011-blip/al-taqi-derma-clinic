@@ -55,23 +55,24 @@ const instagramAccounts = [
 const copy = {
   en: {
     nav: ["Home", "Services", "Doctors", "Gallery", "Booking", "Contact"],
-    heroTitle: "Advanced Dermatology & Aesthetic Care in Kuwait",
+    heroTitle: "Your Beauty, Advanced Medical Care",
     heroText:
-      "A luxury skin destination delivering evidence-based dermatology, refined aesthetics, and world-class patient comfort.",
+      "A premier destination for plastic surgery, reconstructive procedures, advanced dermatology, laser treatments, and skin & body care — where medical expertise meets confidence and beauty.",
     bookNow: "Book Premium Consultation",
     explore: "Explore Signature Services",
     floating: [
       "Skin Care",
-      "Laser Treatment",
-      "Botox & Fillers",
-      "Hair Treatment",
-      "Cosmetic Dermatology",
+      "Body Care",
+      "Laser Department",
+      "Plastic Surgery",
+      "Non-Surgical Aesthetics",
+      "Dermatology",
     ],
-    aboutTitle: "A New Standard of Dermatology in Kuwait",
+    aboutTitle: "About the Clinic",
     aboutText:
-      "At Al Taqi Poly Clinic, each consultation blends medical precision, aesthetic artistry, and concierge-level service. Our board-certified specialists use advanced diagnostic technologies and globally trusted protocols for visible, safe results.",
+      "At Al Taqi Clinic, we combine medical expertise, advanced technology, and premium care to provide a comprehensive experience in dermatology, laser treatments, surgical and non-surgical aesthetics. Our medical team follows the latest international standards to deliver safe, natural, and noticeable.",
     counters: ["Happy Patients", "Years Experience", "Treatments Completed"],
-    pathwayTitle: "Your Luxury Care Pathway",
+    pathwayTitle: "The Ultimate Beauty",
     pathway: [
       "AI Skin Assessment & Medical Mapping",
       "Consultant Diagnosis & Personalized Plan",
@@ -88,11 +89,10 @@ const copy = {
     aiTitle: "AI Skin Analysis",
     aiText:
       "Upload a photo and receive a preliminary skin analysis score, hydration indicators, and recommended treatment direction before your visit.",
-    membershipTitle: "Membership & Packages",
     faqTitle: "Frequently Asked Questions",
     instagramTitle: "Instagram Highlights",
     footerTag:
-      "Luxury dermatology, advanced laser care, and premium aesthetic medicine in Kuwait.",
+      "Advanced expertise in dermatology, aesthetics, and specialized care in Kuwait.",
     offerTitle: "Exclusive May Offer",
     offerText: "20% off on skin rejuvenation packages this week.",
     close: "Close",
@@ -103,17 +103,17 @@ const copy = {
   },
   ar: {
     nav: ["الرئيسية", "الخدمات", "الأطباء", "المعرض", "الحجز", "التواصل"],
-    heroTitle: "جلدية متقدمة وعناية تجميلية راقية في الكويت",
+    heroTitle: "جمالك… بعناية طبية متقدمة",
     heroText:
-      "وجهة فاخرة للعناية بالبشرة تجمع بين الطب المبني على الأدلة والتجميل الدقيق وتجربة مريض عالمية.",
+      "وجهة متخصصة في جراحات التجميل والترميم، والأمراض الجلدية المتقدمة، وعلاجات الليزر، والعناية بالبشرة والجسم — حيث تلتقي الخبرة بالثقة والجمال.",
     bookNow: "احجز استشارة مميزة",
     explore: "استعرض الخدمات المميزة",
-    floating: ["العناية بالبشرة", "علاج الليزر", "البوتوكس والفيلر", "علاج الشعر", "الجلدية التجميلية"],
-    aboutTitle: "معيار جديد لطب الجلدية في الكويت",
+    floating: ["العناية بالبشرة", "العناية بالجسم", "قسم الليزر", "التجميل الجراحي", "التجميل غير الجراحي", "الجلدية"],
+    aboutTitle: "عن العيادة",
     aboutText:
-      "في عيادة التقي، نجمع بين الدقة الطبية واللمسة الجمالية وتجربة رعاية فاخرة. يعمل أطباؤنا المعتمدون وفق أحدث التقنيات والبروتوكولات العالمية لنتائج آمنة وملموسة.",
+      "في مستوصف التقي، نجمع بين الخبرة الطبية، التقنيات الحديثة، والرعاية الراقية لنقدم تجربة متكاملة في الجلدية، الليزر، والتجميل الجراحي وغير الجراحي. يعمل فريقنا الطبي وفق أحدث المعايير العالمية لتحقيق نتائج آمنة، طبيعية، وملموسة.",
     counters: ["مريض سعيد", "سنوات خبرة", "علاج مكتمل"],
-    pathwayTitle: "رحلة رعاية فاخرة",
+    pathwayTitle: "رحلة الجمال المتكاملة",
     pathway: [
       "تحليل ذكي للبشرة وتقييم طبي",
       "تشخيص استشاري وخطة مخصصة",
@@ -130,11 +130,10 @@ const copy = {
     aiTitle: "تحليل البشرة بالذكاء الاصطناعي",
     aiText:
       "ارفع صورة للبشرة واحصل على تقييم مبدئي للمؤشرات الجلدية وتوصية علاجية قبل زيارتك.",
-    membershipTitle: "العضويات والباقات",
     faqTitle: "الأسئلة الشائعة",
     instagramTitle: "أحدث منشورات إنستغرام",
     footerTag:
-      "جلدية فاخرة، ليزر متقدم، وتجميل طبي راق في الكويت.",
+      "خبرة متقدمة في الجلدية والتجميل والعناية المتخصصة في الكويت",
     offerTitle: "عرض مايو الحصري",
     offerText: "خصم 20% على باقات تجديد البشرة هذا الأسبوع.",
     close: "إغلاق",
@@ -146,16 +145,66 @@ const copy = {
 } as const;
 
 const services = [
-  "Dermatology Consultation",
-  "Laser Hair Removal",
-  "Botox & Fillers",
-  "HydraFacial",
-  "Acne Treatment",
-  "Skin Rejuvenation",
-  "PRP Therapy",
-  "Hair Loss Treatment",
-  "Pigmentation Treatment",
-  "Anti-aging Solutions",
+  {
+    titleEn: "Dermatology Consultation",
+    titleAr: "استشارة الجلدية",
+    descEn: "Specialized medical assessment tailored to your skin's unique needs and concerns.",
+    descAr: "تقييم طبي متخصص لوضع خطة علاجية تناسب احتياجات بشرتك",
+  },
+  {
+    titleEn: "Cosmetic Surgery Consultation",
+    titleAr: "استشارة الجراحات التجميلية",
+    descEn: "Expert consultation to discuss surgical options and create a personalized aesthetic plan.",
+    descAr: "استشارة متخصصة لمناقشة الخيارات الجراحية ووضع خطة تناسب أهدافك الجمالية.",
+  },
+  {
+    titleEn: "Non-Surgical Body Contouring",
+    titleAr: "نحت الجسم بدون جراحة",
+    descEn: "Advanced techniques to sculpt and tighten the body without surgical intervention.",
+    descAr: "تقنيات متطورة لتنسيق القوام وشد الجسم بدون تدخل جراحي",
+  },
+  {
+    titleEn: "Hydrafacial",
+    titleAr: "الهيدرافيشل",
+    descEn: "Deep cleansing and instant hydration for healthy, radiant, and refreshed skin.",
+    descAr: "تنظيف عميق وترطيب فوري يمنح البشرة إشراقة صحية ونضارة ملحوظة.",
+  },
+  {
+    titleEn: "Fillers & Botox",
+    titleAr: "الفيلر والبوتكس",
+    descEn: "Precise aesthetic treatments to enhance facial features and soften wrinkles naturally.",
+    descAr: "حلول تجميلية دقيقة لتعزيز الملامح وتقليل التجاعيد بنتائج طبيعية.",
+  },
+  {
+    titleEn: "Hair & Hair Loss Treatments",
+    titleAr: "علاج الشعر والتساقط",
+    descEn: "Specialized therapies designed to stimulate hair growth and strengthen follicles.",
+    descAr: "برامج علاجية متخصصة لتحفيز نمو الشعر وتقوية البصيلات",
+  },
+  {
+    titleEn: "Mesotherapy",
+    titleAr: "الميزوثيرابي",
+    descEn: "A nourishing treatment for skin and hair that enhances vitality and natural radiance.",
+    descAr: "علاج مغذ للبشرة والشعر يعزز الحيوية والإشراقة من الداخل",
+  },
+  {
+    titleEn: "Non-Surgical Skin Tightening",
+    titleAr: "شد البشرة غير الجراحي",
+    descEn: "Modern skin-tightening solutions that improve firmness and elasticity without surgery.",
+    descAr: "تقنيات حديثة لشد البشرة وتحسين مرونتها بدون جراحة",
+  },
+  {
+    titleEn: "Anti-Aging Treatments",
+    titleAr: "علاجات مكافحة علامات التقدم بالعمر",
+    descEn: "Advanced solutions that help maintain youthful, firm, and naturally refreshed skin.",
+    descAr: "حلول متقدمة تساعد على الحفاظ على شباب البشرة ومرونتها بمظهر طبيعي ومتجدد",
+  },
+  {
+    titleEn: "Rhinoplasty Surgery",
+    titleAr: "عملية تجميل الأنف",
+    descEn: "Refined nasal reshaping procedures focused on enhancing balance and natural harmony.",
+    descAr: "إجراءات تجميلية دقيقة لتحسين شكل الأنف مع الحفاظ على التناسق الطبيعي.",
+  },
 ];
 
 const serviceImages = [
@@ -173,19 +222,33 @@ const serviceImages = [
 
 const doctors = [
   {
-    name: "Dr. Nourah AlSulaili",
-    roleEn: "Dermatologist",
-    roleAr: "طبيبة جلدية",
-    bioEn: "Specialized dermatology clinic under the supervision of Dr. Noura Al-Salili. Precision medical treatment, advanced laser, and non-surgical cosmetic procedures. Your beauty is our responsibility.",
-    bioAr: "عيادة جلدية متخصصة تحت إشراف الدكتورة نورة السليلي. علاج طبي دقيق، ليزر متقدم، وإجراءات تجميلية غير جراحية. جمالك مسؤوليتنا.",
+    name: "Dr. Nourah Al-Sulaili",
+    nameAr: "د. نورة الصليلي",
+    roleEn: "Consultant Dermatologist & Aesthetic Specialist",
+    roleAr: "استشارية الأمراض الجلدية والتجميل",
+    bioEn: "Dr. Nourah Al-Sulaili provides advanced dermatological care that combines medical precision, the latest laser technologies, and non-surgical aesthetic procedures to achieve natural and safe results.",
+    bioAr: "تقدم د. نورة رعاية جلدية متقدمة تجمع بين الدقة الطبية، أحدث تقنيات الليزر، والإجراءات التجميلية غير الجراحية لتحقيق نتائج طبيعية وآمنة.",
+    highlightsEn: [
+      "Internationally Certified",
+      "Advanced Expertise in Aesthetic Medicine & Laser Treatments",
+      "Extensive Clinical Experience",
+    ],
+    highlightsAr: ["معتمدة دوليا", "خبرة متقدمة في التجميل والليزر", "خبرة سريرية واسعة"],
     image: "/Dr_Nourah.png",
   },
   {
-    name: "Dr. Majed Al Taqi, MD FRCS(C)",
-    roleEn: "Aesthetic Plastic Surgeon",
-    roleAr: "جراح التجميل والإصلاح",
-    bioEn: "Consultant Plastic and Reconstructive Surgeon, Canadian Board Certified (FRCS(C)). Specialist in facial aesthetics, body contouring, and advanced reconstructive procedures with international expertise.",
-    bioAr: "استشاري جراحة التجميل والإصلاح، معتمد من الكندية (FRCS(C)). متخصص في جماليات الوجه وتحديد الجسم والإجراءات الإصلاحية المتقدمة مع خبرة دولية.",
+    name: "Dr. Majed Al Taqi, MD, FRCS(C)",
+    nameAr: "د. ماجد التقي",
+    roleEn: "Plastic & Reconstructive Surgeon",
+    roleAr: "جراح التجميل والترميم",
+    bioEn: "Consultant in Plastic and Reconstructive Surgery – Canadian Board Certified (FRCS(C)). Dr. Majed offers advanced expertise in plastic and reconstructive surgery, with a focus on facial aesthetics, body contouring, and complex reconstructive procedures, in addition to non-surgical aesthetic treatments delivered in line with the highest international standards.",
+    bioAr: "استشاري جراحة التجميل والترميم – البورد الكندي FRCS(C). يقدم د. ماجد خبرة متقدمة في جراحات التجميل والترميم، مع تخصص في تجميل الوجه، تنسيق القوام، والإجراءات الإصلاحية المتقدمة، بالإضافة إلى العلاجات التجميلية غير الجراحية وفق أحدث المعايير العالمية.",
+    highlightsEn: [
+      "Canadian board-certified (FRCS(C))",
+      "Advanced expertise in surgical and non-surgical aesthetic procedures",
+      "Extensive clinical and international experience",
+    ],
+    highlightsAr: ["معتمد بالبورد الكندي", "خبرة متقدمة في الجراحة والتجميل غير الجراحي", "خبرة سريرية ودولية واسعة"],
     image: "/Dr_Majed.jpg",
   },
 ];
@@ -250,7 +313,7 @@ export default function Home() {
       "@type": "MedicalClinic",
       name: "Al Taqi Poly Clinic",
       medicalSpecialty: "Dermatology",
-      telephone: "+96522228899",
+      telephone: "+96522641061",
       areaServed: "Kuwait",
       availableLanguage: ["English", "Arabic"],
       address: {
@@ -400,7 +463,14 @@ export default function Home() {
               transition={{ duration: 0.55 }}
               className="text-center text-[#efddbc]"
             >
-              <Image src="/logo-mark.svg" alt="Brand mark" width={72} height={72} className="mx-auto rounded-2xl border border-white/20" priority />
+              <Image
+                src="/logo-mark.svg"
+                alt="Brand mark"
+                width={72}
+                height={72}
+                className="mx-auto rounded-2xl border border-white/20"
+                priority
+              />
               <p className="mt-4 text-[0.72rem] uppercase tracking-[0.3em]">Al Taqi Poly Clinic</p>
               <div className="mt-5 h-[2px] w-52 overflow-hidden rounded bg-white/15">
                 <motion.div
@@ -432,7 +502,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col justify-center leading-tight">
               <p className="font-medium text-[0.95rem] tracking-wide">Al Taqi Poly Clinic</p>
-              <p className="mt-[2px] text-[0.7rem] uppercase tracking-[0.26em] text-white/75">Luxury Dermatology</p>
+              <p className="mt-[2px] text-[0.7rem] uppercase tracking-[0.16em] text-white/75">Plastic Surgery, Dermatology &amp; Aesthetics</p>
             </div>
           </div>
 
@@ -515,7 +585,7 @@ export default function Home() {
             className="space-y-6 text-white"
             style={{ x: heroParallaxX, y: heroParallaxY }}
           >
-            <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.72rem] uppercase tracking-[0.2em]">Kuwait Premium Skin Institute</p>
+            <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.72rem] uppercase tracking-[0.2em]">Where Beauty Meets Expertise</p>
             <h1 className="cinematic-title max-w-4xl text-5xl font-semibold sm:text-6xl lg:text-7xl">{t.heroTitle}</h1>
             <p className="max-w-2xl text-base text-white/85 sm:text-lg">{t.heroText}</p>
             <div className="flex flex-wrap gap-3">
@@ -575,7 +645,11 @@ export default function Home() {
             className="space-y-4"
           >
             <p className="text-xs uppercase tracking-[0.28em] text-[var(--gold)]">About Clinic</p>
-            <h2 className="text-4xl md:text-5xl">{t.aboutTitle}</h2>
+            <h2 className="text-4xl text-[var(--text)] md:text-5xl">
+              {lang === "en"
+                ? "A new standard in advanced medical aesthetics and skincare in Kuwait."
+                : "معيار جديد للجمال والرعاية الطبية المتقدمة في الكويت."}
+            </h2>
             <p className="max-w-xl text-[var(--muted)]">{t.aboutText}</p>
             <div className="grid grid-cols-3 gap-3">
               {["48k+", "17+", "220k+"].map((value, idx) => (
@@ -637,20 +711,20 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {services.map((service, i) => (
               <motion.article
-                key={service}
+                key={service.titleEn}
                 whileHover={{ y: -5, rotateX: 2 }}
                 transition={{ type: "spring", stiffness: 180, damping: 14 }}
-                className="glass interactive-card group rounded-2xl p-4"
+                className="glass interactive-card group flex h-full flex-col rounded-2xl p-4"
               >
                 <Sparkles className="mb-3 text-[var(--gold)]" size={20} />
-                <h3 className="text-lg">{service}</h3>
+                <h3 className="text-lg">{lang === "en" ? service.titleEn : service.titleAr}</h3>
                 <p className="mt-2 text-sm text-[var(--muted)]">
-                  {lang === "en" ? "Advanced protocol with measurable outcomes." : "بروتوكول متقدم بنتائج واضحة وقابلة للقياس."}
+                  {lang === "en" ? service.descEn : service.descAr}
                 </p>
-                <div className="mt-4 h-28 overflow-hidden rounded-xl">
+                <div className="mt-4 mt-auto h-28 overflow-hidden rounded-xl">
                   <Image
                     src={serviceImages[i]}
-                    alt={service}
+                    alt={lang === "en" ? service.titleEn : service.titleAr}
                     width={400}
                     height={260}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
@@ -680,12 +754,18 @@ export default function Home() {
                 </div>
                 <div className="p-5 text-[var(--text)]">
                   <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">{lang === "en" ? doctor.roleEn : doctor.roleAr}</p>
-                  <h3 className="mt-2 text-2xl">{doctor.name}</h3>
+                  <h3 className="mt-2 text-2xl">{lang === "en" ? doctor.name : doctor.nameAr ?? doctor.name}</h3>
                   <p className="mt-3 text-sm text-[var(--muted)]">{lang === "en" ? doctor.bioEn : doctor.bioAr}</p>
                   <ul className="mt-4 space-y-2 text-sm text-[var(--muted)]">
-                    <li className="flex items-center gap-2"><ShieldCheck size={16} /> {lang === "en" ? "Board Certified" : "معتمدة دوليا"}</li>
-                    <li className="flex items-center gap-2"><Sparkles size={16} /> {lang === "en" ? "Aesthetic Expertise" : "خبرة تجميلية متقدمة"}</li>
-                    <li className="flex items-center gap-2"><CalendarCheck2 size={16} /> {lang === "en" ? "Extensive Clinical Experience" : "خبرة سريرية واسعة"}</li>
+                    {(lang === "en"
+                      ? doctor.highlightsEn ?? ["Board Certified", "Aesthetic Expertise", "Extensive Clinical Experience"]
+                      : doctor.highlightsAr ?? ["معتمدة دوليا", "خبرة تجميلية متقدمة", "خبرة سريرية واسعة"]
+                    ).map((point, idx) => (
+                      <li key={point} className="flex items-center gap-2">
+                        {idx === 0 ? <ShieldCheck size={16} /> : idx === 1 ? <Sparkles size={16} /> : <CalendarCheck2 size={16} />}
+                        {point}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </motion.article>
@@ -693,29 +773,41 @@ export default function Home() {
             <aside className="glass luxury-border flex flex-col justify-between rounded-3xl p-6 text-[var(--text)]">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--gold)]">Clinic Focus</p>
-                <h3 className="mt-2 text-3xl">Two specialists, one care pathway</h3>
+                <h3 className="mt-2 text-3xl">
+                  {lang === "en" ? "Two specialists, one seamless treatment journey." : "اختصاصان… ورحلة علاجية متكاملة"}
+                </h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                  Dr. Nourah leads precision dermatology, laser, and non-surgical cosmetic care, while Dr. Majed handles advanced plastic and reconstructive procedures. Together they cover the full treatment journey under one roof.
+                  {lang === "en"
+                    ? "Dr. Nourah leads precision dermatology, advanced laser treatments, and aesthetic care, while Dr. Majed provides plastic and reconstructive surgery alongside non-surgical cosmetic procedures. Together, they deliver a comprehensive treatment experience under one roof."
+                    : "تقود د. نورة خدمات الجلدية الدقيقة، الليزر، والعلاجات التجميلية المتقدمة، بينما يقدم د. ماجد جراحات التجميل والترميم إلى جانب الإجراءات التجميلية غير الجراحية. معًا نوفر تجربة علاجية متكاملة تحت سقف واحد."}
                 </p>
                 <ul className="mt-5 space-y-3 text-sm text-[var(--muted)]">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
-                    Precision medical dermatology with advanced laser support
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
-                    Non-surgical cosmetic procedures and skin refinement
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
-                    Canadian board-certified plastic and reconstructive surgery
-                  </li>
+                  {(lang === "en"
+                    ? [
+                        "Precision medical dermatology supported by advanced laser technology",
+                        "Advanced aesthetic treatments and skin refinement",
+                        "Canadian board-certified plastic and reconstructive surgery",
+                        "Personalized treatment plans led by certified specialists",
+                      ]
+                    : [
+                        "طب جلدية دقيق مدعوم بأحدث تقنيات الليزر",
+                        "علاجات تجميلية متقدمة وتحسين جودة البشرة",
+                        "جراحة تجميل وترميم معتمدة بالبورد الكندي",
+                      ]
+                  ).map((point) => (
+                    <li key={point} className="flex items-start gap-3">
+                      <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
+                      {point}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="mt-6 rounded-2xl border border-[var(--line)] bg-white/25 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">Patient Promise</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">{lang === "en" ? "Patient Promise" : "وعدنا للمرضى"}</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-                  Your beauty is our responsibility. We build personalized plans that balance safety, elegance, and long-term results.
+                  {lang === "en"
+                    ? "Your beauty is our responsibility. We build personalized plans that balance safety, elegance, and long-term results."
+                    : "جمالك هو مسؤوليتنا. نضع خطط علاجية مخصصة توازن بين الأمان، الأناقة، والنتائج طويلة الأمد"}
                 </p>
               </div>
             </aside>
@@ -794,11 +886,15 @@ export default function Home() {
           </div>
 
           <div className="space-y-3">
-            <a href="https://wa.me/96522228899" className="glass flex items-center justify-between rounded-2xl p-4">
-              <span className="flex items-center gap-2"><MessageCircle size={18} /> {t.whatsapp}</span>
+            <a href="https://wa.me/96550440655" className="glass flex items-center justify-between rounded-2xl p-4">
+              <span className="flex items-center gap-2"><MessageCircle size={18} /> {lang === "en" ? "WhatsApp Dr. Majed" : "واتساب د. ماجد"}</span>
               <ArrowUpRight size={16} />
             </a>
-            <a href="tel:+96522228899" className="glass flex items-center justify-between rounded-2xl p-4">
+            <a href="https://wa.me/96550440877" className="glass flex items-center justify-between rounded-2xl p-4">
+              <span className="flex items-center gap-2"><MessageCircle size={18} /> {lang === "en" ? "WhatsApp Dr. Nourah" : "واتساب د. نورة"}</span>
+              <ArrowUpRight size={16} />
+            </a>
+            <a href="tel:+96522641061" className="glass flex items-center justify-between rounded-2xl p-4">
               <span className="flex items-center gap-2"><Phone size={18} /> {t.callNow}</span>
               <ArrowUpRight size={16} />
             </a>
@@ -823,23 +919,6 @@ export default function Home() {
             </div>
           </div>
           <Image src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1500&q=80" alt="AI skin analysis" width={1200} height={760} className="h-full rounded-3xl object-cover" />
-        </section>
-
-        <section id="membership" className="glass rounded-3xl p-6">
-          <h2 className="mb-5 text-4xl">{t.membershipTitle}</h2>
-          <div className="grid gap-3 md:grid-cols-3">
-            {[
-              { name: "Elite Glow", price: "KD 190 / month" },
-              { name: "Laser Platinum", price: "KD 280 / month" },
-              { name: "Royal Rejuvenation", price: "KD 420 / month" },
-            ].map((pkg) => (
-              <motion.div key={pkg.name} whileHover={{ y: -4 }} className="luxury-border interactive-card rounded-2xl p-4">
-                <h3 className="text-2xl">{pkg.name}</h3>
-                <p className="mt-1 text-[var(--gold)]">{pkg.price}</p>
-                <p className="mt-3 text-sm text-[var(--muted)]">Includes priority booking, monthly treatment sessions, skin analytics, and concierge support.</p>
-              </motion.div>
-            ))}
-          </div>
         </section>
 
         <section id="blog">
@@ -910,7 +989,7 @@ export default function Home() {
                     Dr. Nourah and Dr. Majed welcome you to follow along, send a DM, or reach out with your skin goals. We love turning questions into a clear care plan.
                   </p>
                   <p className="mt-3 font-serif text-base italic text-[var(--text)]">
-                    "Your beauty is our responsibility."
+                    Your beauty is our responsibility.
                   </p>
                   <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[var(--gold)]">
                     Dr. Nourah AlSulaili & Dr. Majed Al Taqi
@@ -951,7 +1030,7 @@ export default function Home() {
           </div>
           <div>
             <h4 className="text-sm uppercase tracking-[0.2em] text-[#ccb183]">Contact</h4>
-            <p className="mt-2 text-sm">+965 2222 8899</p>
+            <p className="mt-2 text-sm">+965 2264 1061</p>
             <p className="text-sm">info@altaqipolyclinic.com</p>
             <p className="mt-2 text-sm text-[#cbbba9]">{clinicLocation}</p>
             <a href={mapsDirectionsUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-sm text-[#e6c996] underline underline-offset-4">
@@ -978,13 +1057,22 @@ export default function Home() {
         </div>
       </footer>
 
-      <a
-        href="https://wa.me/96522228899"
-        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-2xl"
-      >
-        <MessageCircle size={18} />
-        WhatsApp
-      </a>
+      <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+        <a
+          href="https://wa.me/96550440655"
+          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-2xl"
+        >
+          <MessageCircle size={18} />
+          {lang === "en" ? "WhatsApp Dr. Majed" : "واتساب د. ماجد"}
+        </a>
+        <a
+          href="https://wa.me/96550440877"
+          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white shadow-2xl"
+        >
+          <MessageCircle size={18} />
+          {lang === "en" ? "WhatsApp Dr. Nourah" : "واتساب د. نورة"}
+        </a>
+      </div>
 
     </div>
   );
