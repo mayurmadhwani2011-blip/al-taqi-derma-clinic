@@ -586,7 +586,7 @@ export default function Home() {
             style={{ x: heroParallaxX, y: heroParallaxY }}
           >
             <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.72rem] uppercase tracking-[0.2em]">Where Beauty Meets Expertise</p>
-            <h1 className="cinematic-title max-w-4xl text-5xl font-semibold sm:text-6xl lg:text-7xl">{t.heroTitle}</h1>
+            <h1 className="cinematic-title gold-text max-w-4xl text-5xl font-semibold sm:text-6xl lg:text-7xl">{t.heroTitle}</h1>
             <p className="max-w-2xl text-base text-white/85 sm:text-lg">{t.heroText}</p>
             <div className="flex flex-wrap gap-3">
               <a href="#booking" className="gold-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition">
@@ -631,6 +631,7 @@ export default function Home() {
           </motion.aside>
         </div>
 
+        <div className="scroll-cue" aria-hidden="true" />
         <div className="floating-particle left-[8%] top-[22%]" />
         <div className="floating-particle left-[88%] top-[28%]" style={{ animationDelay: "1s" }} />
         <div className="floating-particle left-[74%] top-[82%]" style={{ animationDelay: "2.1s" }} />
@@ -644,7 +645,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--gold)]">About Clinic</p>
+            <p className="eyebrow">About Clinic</p>
             <h2 className="text-4xl text-[var(--text)] md:text-5xl">
               {lang === "en"
                 ? "A new standard in advanced medical aesthetics and skincare in Kuwait."
@@ -654,7 +655,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-3">
               {["48k+", "17+", "220k+"].map((value, idx) => (
                 <motion.div key={value} whileHover={{ y: -3 }} className="glass rounded-2xl p-3 text-center">
-                  <p className="text-2xl font-semibold text-[var(--gold)]">{value}</p>
+                  <p className="phone-ltr text-2xl font-semibold text-[var(--gold)]">{value}</p>
                   <p className="text-xs text-[var(--muted)]">{t.counters[idx]}</p>
                 </motion.div>
               ))}
@@ -699,7 +700,7 @@ export default function Home() {
           <div className="grid gap-3 md:grid-cols-4">
             {t.pathway.map((step, i) => (
               <motion.article key={step} whileHover={{ rotateX: 2, rotateY: -2, y: -4 }} className="luxury-border rounded-2xl p-4">
-                <p className="mb-2 text-sm text-[var(--gold)]">0{i + 1}</p>
+                <p className="phone-ltr mb-2 text-sm text-[var(--gold)]">0{i + 1}</p>
                 <p className="text-sm leading-6">{step}</p>
               </motion.article>
             ))}
@@ -707,6 +708,7 @@ export default function Home() {
         </section>
 
         <section id="services">
+          <p className="eyebrow mb-2">{lang === "en" ? "What We Offer" : "ماذا نقدم"}</p>
           <h2 className="mb-6 text-4xl">{t.servicesTitle}</h2>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {services.map((service, i) => (
@@ -737,7 +739,7 @@ export default function Home() {
 
         <section id="doctors">
           <div className="mb-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--gold)]">{t.doctorTitle}</p>
+            <p className="eyebrow">{t.doctorTitle}</p>
             <h2 className="mt-2 text-4xl">{lang === "en" ? "Our Specialists" : "فريق الأطباء"}</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -815,6 +817,7 @@ export default function Home() {
         </section>
 
         <section id="gallery" className="glass rounded-3xl p-6">
+          <p className="eyebrow mb-2">{lang === "en" ? "Real Results" : "نتائج حقيقية"}</p>
           <h2 className="mb-5 text-4xl">{t.beforeAfterTitle}</h2>
           <div className="relative overflow-hidden rounded-2xl">
             <Image src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1800&q=80" alt="Before treatment" width={1800} height={900} className="h-[420px] w-full object-cover" />
@@ -836,7 +839,9 @@ export default function Home() {
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-5">
             {galleryImages.map((image) => (
-              <Image key={image} src={image} alt="Aesthetic result" width={320} height={220} className="h-24 w-full rounded-xl object-cover" />
+              <div key={image} className="zoom-media rounded-xl">
+                <Image src={image} alt="Aesthetic result" width={320} height={220} className="h-24 w-full rounded-xl object-cover" />
+              </div>
             ))}
           </div>
         </section>
@@ -868,6 +873,7 @@ export default function Home() {
 
         <section className="grid gap-4 lg:grid-cols-[1fr_0.95fr]" id="booking">
           <div className="glass rounded-3xl p-6">
+            <p className="eyebrow mb-2">{lang === "en" ? "Reserve Your Visit" : "احجز زيارتك"}</p>
             <h2 className="text-4xl">{t.bookingTitle}</h2>
             <p className="mt-2 text-[var(--muted)]">{t.bookingSubtitle}</p>
             <form className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -913,7 +919,7 @@ export default function Home() {
             <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[var(--line)] bg-white/35 p-3">
               <ScanFace className="text-[var(--gold)]" />
               <div>
-                <p className="font-semibold">Skin Hydration Index: 78%</p>
+                <p className="font-semibold">Skin Hydration Index: <span className="phone-ltr">78%</span></p>
                 <p className="text-sm text-[var(--muted)]">Suggested: HydraFacial + Pigmentation Protocol</p>
               </div>
             </div>
@@ -929,7 +935,7 @@ export default function Home() {
               "What to Expect from Medical-Grade Laser Programs",
               "Botox and Fillers: Safety, Timing, and Best Outcomes",
             ].map((title, idx) => (
-              <article key={title} className="glass rounded-2xl overflow-hidden">
+              <article key={title} className="glass zoom-media rounded-2xl overflow-hidden">
                 <Image src={galleryImages[idx]} alt={title} width={600} height={360} className="h-40 w-full object-cover" />
                 <div className="p-4">
                   <h3 className="text-xl">{title}</h3>
@@ -941,6 +947,7 @@ export default function Home() {
         </section>
 
         <section id="faq" className="glass rounded-3xl p-6">
+          <p className="eyebrow mb-2">{lang === "en" ? "Good to Know" : "معلومات مهمة"}</p>
           <h2 className="mb-4 text-4xl">{t.faqTitle}</h2>
           <div className="space-y-2">
             {faqs.map((item, idx) => {
@@ -1016,7 +1023,9 @@ export default function Home() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {instagramImages.map((image) => (
-              <Image key={image} src={image} alt="Instagram skincare post" width={420} height={420} className="h-56 w-full rounded-2xl object-cover" />
+              <div key={image} className="zoom-media rounded-2xl">
+                <Image src={image} alt="Instagram skincare post" width={420} height={420} className="h-56 w-full rounded-2xl object-cover" />
+              </div>
             ))}
           </div>
         </section>
@@ -1030,7 +1039,7 @@ export default function Home() {
           </div>
           <div>
             <h4 className="text-sm uppercase tracking-[0.2em] text-[#ccb183]">Contact</h4>
-            <p className="mt-2 text-sm">+965 2264 1061</p>
+            <p className="phone-ltr mt-2 text-sm">+965 2264 1061</p>
             <p className="text-sm">info@altaqipolyclinic.com</p>
             <p className="mt-2 text-sm text-[#cbbba9]">{clinicLocation}</p>
             <a href={mapsDirectionsUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-sm text-[#e6c996] underline underline-offset-4">
@@ -1039,7 +1048,7 @@ export default function Home() {
           </div>
           <div>
             <h4 className="text-sm uppercase tracking-[0.2em] text-[#ccb183]">Hours</h4>
-            <p className="mt-2 text-sm">Sat - Thu: 9:00 AM - 9:00 PM</p>
+            <p className="phone-ltr mt-2 text-sm">Sat - Thu: 9:00 AM - 9:00 PM</p>
             <p className="text-sm">Friday: Closed</p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-white/10">
@@ -1053,7 +1062,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mx-auto mt-8 w-[92%] max-w-7xl border-t border-white/10 pt-4 text-xs text-[#cbbba9]">
-          <p>© {currentYear} Al Taqi Poly Clinic. All rights reserved.</p>
+          <p>© <span className="phone-ltr">{currentYear}</span> Al Taqi Poly Clinic. All rights reserved.</p>
         </div>
       </footer>
 
