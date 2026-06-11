@@ -16,7 +16,47 @@ import {
   Sparkles,
   Sun,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+function CountUp({ value, suffix, duration = 1600 }: { value: number; suffix: string; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(0);
+  const started = useRef(false);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (reduceMotion) {
+      setDisplay(value);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting || started.current) return;
+        started.current = true;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(Math.round(value * eased));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [value, duration, reduceMotion]);
+
+  return (
+    <span ref={ref}>
+      {display.toLocaleString("en-US")}
+      {suffix}
+    </span>
+  );
+}
 
 type Lang = "en" | "ar";
 
@@ -272,6 +312,39 @@ const faqs = [
   },
 ];
 
+const counterStats = [
+  { value: 48000, suffix: "+" },
+  { value: 17, suffix: "+" },
+  { value: 220000, suffix: "+" },
+];
+
+const offers = [
+  {
+    titleEn: "Hydrafacial Glow Package",
+    titleAr: "باقة الهيدرافيشل للإشراقة",
+    descEn: "3 sessions of deep-cleansing Hydrafacial for instantly radiant skin.",
+    descAr: "ثلاث جلسات هيدرافيشل لتنظيف عميق وإشراقة فورية للبشرة.",
+    badgeEn: "20% OFF",
+    badgeAr: "خصم 20%",
+  },
+  {
+    titleEn: "Laser Full-Body Program",
+    titleAr: "برنامج الليزر للجسم كامل",
+    descEn: "6-session full-body laser hair removal with a free consultation.",
+    descAr: "ست جلسات ليزر لإزالة الشعر للجسم كامل مع استشارة مجانية.",
+    badgeEn: "FREE CONSULT",
+    badgeAr: "استشارة مجانية",
+  },
+  {
+    titleEn: "Anti-Aging Signature Plan",
+    titleAr: "خطة مكافحة التجاعيد المميزة",
+    descEn: "Botox + skin booster combo designed by our consultants.",
+    descAr: "بوتكس مع معزز للبشرة بخطة يصممها استشاريونا.",
+    badgeEn: "LIMITED",
+    badgeAr: "لفترة محدودة",
+  },
+];
+
 const navAnchors = ["home", "services", "doctors", "gallery", "booking", "contact"];
 const clinicLocation = "T tower, Sharhabil Bin Hasanah St, مقابل 30000, Kuwait";
 const clinicCoordinates = "29.3245213,48.0118032";
@@ -286,6 +359,7 @@ export default function Home() {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [cursorVisible, setCursorVisible] = useState(false);
+  const [booking, setBooking] = useState({ name: "", phone: "", date: "", time: "", note: "" });
   const shouldReduceMotion = useReducedMotion();
 
   const cursorX = useMotionValue(-100);
@@ -653,9 +727,11 @@ export default function Home() {
             </h2>
             <p className="max-w-xl text-[var(--muted)]">{t.aboutText}</p>
             <div className="grid grid-cols-3 gap-3">
-              {["48k+", "17+", "220k+"].map((value, idx) => (
-                <motion.div key={value} whileHover={{ y: -3 }} className="glass rounded-2xl p-3 text-center">
-                  <p className="phone-ltr text-2xl font-semibold text-[var(--gold)]">{value}</p>
+              {counterStats.map((stat, idx) => (
+                <motion.div key={idx} whileHover={{ y: -3 }} className="glass rounded-2xl p-3 text-center">
+                  <p className="phone-ltr text-2xl font-semibold text-[var(--gold)]">
+                    <CountUp value={stat.value} suffix={stat.suffix} />
+                  </p>
                   <p className="text-xs text-[var(--muted)]">{t.counters[idx]}</p>
                 </motion.div>
               ))}
@@ -732,6 +808,32 @@ export default function Home() {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section id="offers" className="glass section-gradient rounded-3xl p-6">
+          <p className="eyebrow mb-2">{lang === "en" ? "Limited Time" : "لفترة محدودة"}</p>
+          <h2 className="mb-6 text-4xl">{lang === "en" ? "Special Offers" : "العروض الخاصة"}</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {offers.map((offer) => (
+              <motion.article
+                key={offer.titleEn}
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 180, damping: 14 }}
+                className="luxury-border relative flex h-full flex-col rounded-2xl p-5"
+              >
+                <span className="gold-btn absolute -top-3 inline-flex rounded-full px-3 py-1 text-[0.68rem] font-bold tracking-[0.14em] ltr:right-4 rtl:left-4">
+                  {lang === "en" ? offer.badgeEn : offer.badgeAr}
+                </span>
+                <Sparkles className="mb-3 text-[var(--gold)]" size={20} />
+                <h3 className="text-xl">{lang === "en" ? offer.titleEn : offer.titleAr}</h3>
+                <p className="mt-2 flex-1 text-sm text-[var(--muted)]">{lang === "en" ? offer.descEn : offer.descAr}</p>
+                <a href="#booking" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--gold)]">
+                  {lang === "en" ? "Claim Offer" : "احصل على العرض"}
+                  <ArrowUpRight size={15} />
+                </a>
               </motion.article>
             ))}
           </div>
@@ -876,18 +978,67 @@ export default function Home() {
             <p className="eyebrow mb-2">{lang === "en" ? "Reserve Your Visit" : "احجز زيارتك"}</p>
             <h2 className="text-4xl">{t.bookingTitle}</h2>
             <p className="mt-2 text-[var(--muted)]">{t.bookingSubtitle}</p>
-            <form className="mt-5 grid gap-3 sm:grid-cols-2">
-              <input className="rounded-xl border border-[var(--line)] bg-white/50 p-3" placeholder={lang === "en" ? "Full Name" : "الاسم الكامل"} />
-              <input className="rounded-xl border border-[var(--line)] bg-white/50 p-3" placeholder={lang === "en" ? "Phone Number" : "رقم الهاتف"} />
-              <input type="date" className="rounded-xl border border-[var(--line)] bg-white/50 p-3" />
-              <select className="rounded-xl border border-[var(--line)] bg-white/50 p-3">
-                <option>{lang === "en" ? "Preferred Time" : "الوقت المفضل"}</option>
+            <form
+              className="mt-5 grid gap-3 sm:grid-cols-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const lines = [
+                  lang === "en" ? "New appointment request:" : "طلب حجز موعد جديد:",
+                  `${lang === "en" ? "Name" : "الاسم"}: ${booking.name}`,
+                  `${lang === "en" ? "Phone" : "الهاتف"}: ${booking.phone}`,
+                  booking.date ? `${lang === "en" ? "Date" : "التاريخ"}: ${booking.date}` : "",
+                  booking.time ? `${lang === "en" ? "Time" : "الوقت"}: ${booking.time}` : "",
+                  booking.note ? `${lang === "en" ? "Concern" : "ملاحظات"}: ${booking.note}` : "",
+                ].filter(Boolean);
+                window.open(`https://wa.me/96550440655?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+              }}
+            >
+              <input
+                required
+                value={booking.name}
+                onChange={(e) => setBooking((p) => ({ ...p, name: e.target.value }))}
+                className="rounded-xl border border-[var(--line)] bg-white/50 p-3"
+                placeholder={lang === "en" ? "Full Name" : "الاسم الكامل"}
+              />
+              <input
+                required
+                type="tel"
+                value={booking.phone}
+                onChange={(e) => setBooking((p) => ({ ...p, phone: e.target.value }))}
+                className="rounded-xl border border-[var(--line)] bg-white/50 p-3"
+                placeholder={lang === "en" ? "Phone Number" : "رقم الهاتف"}
+              />
+              <input
+                type="date"
+                value={booking.date}
+                onChange={(e) => setBooking((p) => ({ ...p, date: e.target.value }))}
+                className="rounded-xl border border-[var(--line)] bg-white/50 p-3"
+              />
+              <select
+                value={booking.time}
+                onChange={(e) => setBooking((p) => ({ ...p, time: e.target.value }))}
+                className="rounded-xl border border-[var(--line)] bg-white/50 p-3"
+              >
+                <option value="">{lang === "en" ? "Preferred Time" : "الوقت المفضل"}</option>
                 <option>10:00 AM</option>
                 <option>12:30 PM</option>
                 <option>6:00 PM</option>
               </select>
-              <textarea className="rounded-xl border border-[var(--line)] bg-white/50 p-3 sm:col-span-2" rows={4} placeholder={lang === "en" ? "Share your concern" : "اكتب ملاحظاتك"} />
-              <button className="gold-btn rounded-xl px-4 py-3 text-sm font-semibold sm:col-span-2">{t.submit}</button>
+              <textarea
+                value={booking.note}
+                onChange={(e) => setBooking((p) => ({ ...p, note: e.target.value }))}
+                className="rounded-xl border border-[var(--line)] bg-white/50 p-3 sm:col-span-2"
+                rows={4}
+                placeholder={lang === "en" ? "Share your concern" : "اكتب ملاحظاتك"}
+              />
+              <button type="submit" className="gold-btn rounded-xl px-4 py-3 text-sm font-semibold sm:col-span-2">
+                {t.submit}
+              </button>
+              <p className="text-xs text-[var(--muted)] sm:col-span-2">
+                {lang === "en"
+                  ? "Your request opens in WhatsApp — send it and our team will confirm your slot."
+                  : "سيُفتح طلبك في واتساب — أرسله وسيؤكد فريقنا موعدك."}
+              </p>
             </form>
           </div>
 
